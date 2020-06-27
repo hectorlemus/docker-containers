@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  database:
+    image: postgres
+    container_name: $CONTAINER_NAME
+    restart: on-failure
+    environment: 
+      POSTGRES_USER: $USER
+      POSTGRES_PASSWORD: $PASSWORD
+    ports: 
+      # HOST_PORT:CONTAINER_PORT
+      - 5432:5432
+    volumes: 
+      - $VOLUME_NAME:/var/lib/postgresql/data/
+  
+volumes: 
+  $VOLUME_NAME:
